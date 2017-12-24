@@ -1,6 +1,34 @@
 .person {
   border: 1px solid wheat;
-  width: 300px;
-  padding: 5px;
+  background-color: orange;
+  margin: 10px 5px;
+  padding: 10px 5px;
   display: inline-block;
+  min-width: 400px;
+  max-width: 400px;
+}
+
+.person .btn{
+    background-color:black;
+    color: white;
+    border-radius: 2px;
+    width: 75px;
+    height: 40px;
+    font-size: 16px;
+    border: 0px;
+    margin: 5px 10px 5px 0;
+    cursor: pointer;
+}
+
+.person .btn:hover{
+  background: gray;
+}
+.person .delete-btn{
+  background-color: red;
+  color: white;
+}
+
+.person .delete-btn:hover {
+  background-color:darkred;
+  color: white;
 }

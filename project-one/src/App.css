@@ -11,3 +11,7 @@
   color:gray;
   cursor: pointer;
 }
+
+.switch-btn:hover{
+  background-color: cornsilk;
+}

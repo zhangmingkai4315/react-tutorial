@@ -3,6 +3,7 @@ import React, {
 } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Radium,{StyleRoot} from 'radium'
 import _ from 'lodash'
 import Person from './Person/Person.js'
 
@@ -163,7 +164,7 @@ import Person from './Person/Person.js'
 //       </div>
 //     );
 //   }
-// }
+// }  
 
 
 // 增加删除button在子组件中并传递到父组件
@@ -238,6 +239,8 @@ class App extends Component {
       })
     }
     return (
+      // 使用radium时候需要将App都包含在内
+      <StyleRoot>
       <div className="App">
         <div>
           <button className="switch-btn" onClick={this.switchHandler}>Switch</button>
@@ -245,6 +248,7 @@ class App extends Component {
         </div>
         {renderPerson}
       </div>
+      </StyleRoot>
     );
   }
 }
