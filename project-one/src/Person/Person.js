@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Radium from 'radium'
-import './Person.css'
+import cssClasses from './Person.css'
 
 // 1. 使用props来接收数据 
 
@@ -89,34 +89,32 @@ import './Person.css'
 
 
 
-// 1.使用radium管理inline style
-// 请查看每次随机数都会变化，说明进行了重新的rerender!
+// 1.使用css module来加载类
+// 需要修改webpack中的参数：
+// test: /\.css$/,
+//   use: [
+//     require.resolve('style-loader'),
+//     {
+//       loader: require.resolve('css-loader'),
+//       options: {
+//         importLoaders: 1,
+//         modules: true,
+//         localIdentName: '[name]__[local]__[hash:base64:5]'
+//       },
+//     },
+
 const Person = (props) => {
-  let personStyle = {
-    "border":"1px solid wheat",
-    "backgroundColor":"orange",
-    "margin":"10px 5px",
-    "padding":"10px 5px",
-    "display":"inline-block",
-    "width":"300px",
-    ":hover":{
-      backgroundColor:"wheat"
-    },
-    "@media (min-width: 1000px)":{
-      "width": "450px",
-    }
-  }
   return (
-    <div style={personStyle}>
+    <div className={cssClasses["person"]}>
       <h2>Name: {props.name}{props.children}</h2>
       <p>Age: {props.age}</p>
       <small>Random: {Math.floor(Math.random() * 30)}</small>
       <div>
-        <button className="btn" onClick={props.showId}>show id</button>
-        <button className="btn delete-btn" onClick={props.deleteCard}>delete</button>
+        <button className={cssClasses["btn"]} onClick={props.showId}>show id</button>
+      <button className={cssClasses["btn"] + " " + cssClasses["delete-btn"]}  onClick={props.deleteCard}>delete</button>
       </div>
       <input type="text" onChange={props.changeName} value={props.name} />
     </div>
   )
 }
-export default Radium(Person)
+export default Person

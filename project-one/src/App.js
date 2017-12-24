@@ -2,7 +2,7 @@ import React, {
   Component
 } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import cssClassApp from './App.css';
 import Radium,{StyleRoot} from 'radium'
 import _ from 'lodash'
 import Person from './Person/Person.js'
@@ -241,10 +241,10 @@ class App extends Component {
     return (
       // 使用radium时候需要将App都包含在内
       <StyleRoot>
-      <div className="App">
+        <div className={cssClassApp.App}>
         <div>
-          <button className="switch-btn" onClick={this.switchHandler}>Switch</button>
-          <button className="switch-btn" onClick={this.showOrHidePanel}>{this.state.showPanel ? "Hide" : "Show"}</button>
+            <button className={cssClassApp["switch-btn"]} onClick={this.switchHandler}>Switch</button>
+            <button className={cssClassApp["switch-btn"]} onClick={this.showOrHidePanel}>{this.state.showPanel ? "Hide" : "Show"}</button>
         </div>
         {renderPerson}
       </div>
