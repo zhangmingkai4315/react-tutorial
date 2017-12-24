@@ -1,0 +1,18 @@
+.header {
+  text-align: center;
+  
+}
+.switch-btn {
+  height: 50px;
+  width: 100px;
+  font-size: 1.5em;
+  background-color: bisque;
+  border-radius: 10px;
+  margin: 10px;
+  color: gray;
+  cursor: pointer;
+}
+
+.switch-btn:hover {
+  background-color: cornsilk;
+}
