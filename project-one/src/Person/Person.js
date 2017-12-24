@@ -45,21 +45,48 @@ import './Person.css'
 
 // 1.如何使用inline-style
 
+// const Person = (props) => {
+//   const style={
+//     backgroundColor:"orange",
+//     margin:"10px 5px",
+//     padding:"10px 5px",
+//     display:"inline-block",
+//     width:"400px"
+//   }
+//   return (
+//     <div style={style}>
+//       <h2>Name: {props.name}{props.children}</h2>
+//       <p>Age: {props.age}</p>
+//       <small>Random: {Math.floor(Math.random() * 30)}</small>
+//       <div>
+//         <button onClick={props.showOrder}>show order</button>
+//       </div>
+//       <input type="text" onChange={props.changeName} value={props.name}/>
+//     </div>
+//   )
+// }
+
+
+// 1.增加删除按钮
+// 2.使用id来管理内容
 const Person = (props) => {
-  const style={
-    backgroundColor:"orange",
-    margin:"10px 5px",
-    padding:"10px 5px",
-    display:"inline-block",
-    width:"400px"
+  const style = {
+    backgroundColor: "orange",
+    margin: "10px 5px",
+    padding: "10px 5px",
+    display: "inline-block",
+    width: "400px"
   }
   return (
     <div style={style}>
       <h2>Name: {props.name}{props.children}</h2>
       <p>Age: {props.age}</p>
       <small>Random: {Math.floor(Math.random() * 30)}</small>
-      <div><button onClick={props.showOrder}>show order</button></div>
-      <input type="text" onChange={props.changeName} value={props.name}/>
+      <div>
+        <button onClick={props.showId}>show id</button>
+        <button onClick={props.deleteCard}>delete</button>
+      </div>
+      <input type="text" onChange={props.changeName} value={props.name} />
     </div>
   )
 }
