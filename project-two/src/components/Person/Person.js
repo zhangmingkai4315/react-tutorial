@@ -29,6 +29,7 @@ class Person extends Component{
   componentDidMount() {
     console.log("person componentDidMount")
     this.inputElement.focus()
+    // this.inputElement
     console.log(this.inputElement)
   }  
   render(){
