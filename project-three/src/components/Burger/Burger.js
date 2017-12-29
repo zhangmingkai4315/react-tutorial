@@ -1,7 +1,6 @@
 import React from 'react';
 import css from './Burger.css'
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
-import BurgerBuilder from '../../containers/BurgerBuilder/BurgerBuilder';
 const burger = (props)=>{
   let burgerIngredient = Object.keys(props.ingredients)
     .map(type => [...Array(props.ingredients[type])].map((_,i)=>(
