@@ -4,7 +4,7 @@ import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 import BurgerBuilder from '../../containers/BurgerBuilder/BurgerBuilder';
 const burger = (props)=>{
   let burgerIngredient = Object.keys(props.ingredients)
-      .map(type => [...Array(props.ingredients[type])].map((_,i)=>(
+    .map(type => [...Array(props.ingredients[type])].map((_,i)=>(
         <BurgerIngredient key={type+i} type={type}/>)
       ))
       .reduce((arr,curr)=>{
