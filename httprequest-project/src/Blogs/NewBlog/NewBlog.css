@@ -1,0 +1,44 @@
+.new-blog{
+    border-top: 1px solid #8080801f;
+    border-bottom: 1px solid #8080801f;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+}
+
+.new-blog >.group{
+      width: 80%;
+      left: 10%;
+      position: relative;
+      text-align: left;
+      margin-bottom: 1em;
+}
+
+.new-blog>.group>label{
+      text-align: right;
+      display: inline-block;
+      width: 40%;
+      font-size: 1.2em;
+      padding-right: 2%;
+      font-family: fantasy;
+}
+.new-blog>.group>input,
+.new-blog>.group>textarea {
+  text-align: left;
+  display: inline-block;
+  width: 40%;
+  font-size: .8em;
+  padding-right: 2%;
+  font-family: fantasy;
+}
+
+.new-blog>.group>button{
+      display: inline-block;
+      left: 42%;
+      position: relative;
+      padding: .5em 1.5em;
+      background-color: blanchedalmond;
+      color: gray;
+}
+.new-blog>.group>button:hover {
+  color: rgb(46, 46, 46);
+}
