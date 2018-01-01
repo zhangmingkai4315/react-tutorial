@@ -9,3 +9,6 @@ react开发基础教程
 
 4. [axios](https://github.com/axios/axios)
 5. [测试使用的json服务器](http://jsonplaceholder.typicode.com/)
+
+
+6. [css-loading](https://projects.lukehaas.me/css-loaders/)

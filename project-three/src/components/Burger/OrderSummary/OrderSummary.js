@@ -16,7 +16,7 @@ const orderSummary  = (props)=>{
       </ul>
       <br/>
       <Button buttonType="Danger" clicked={props.onCancel}>Cancel</Button>
-      <Button buttonType="Success" clicked={props.purchaseContinue}>Continue</Button>
+      <Button buttonType="Success" clicked={props.onContinue}>Continue</Button>
   </Aux>
 )
 }
