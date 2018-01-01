@@ -7,3 +7,5 @@ react开发基础教程
 2. [关于bind和apply 以及call的区别：](http://javascriptissexy.com/javascript-apply-call-and-bind-methods-are-essential-for-javascript-professionals/)
 3. [create-react-app](https://github.com/facebookincubator/create-react-app)
 
+4. [axios](https://github.com/axios/axios)
+5. [测试使用的json服务器](http://jsonplaceholder.typicode.com/)
