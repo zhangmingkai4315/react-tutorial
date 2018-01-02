@@ -13,6 +13,20 @@
   padding: 20px;
   color: white;
 }
+.App-header nav{
+  position: absolute;
+}
+.App-header>nav>ul>li{
+  display:  inline-block;
+  margin:.5em 1em
+}
+.App-header>nav>ul>li>a {
+  text-decoration: none;
+  color:white;
+}
+.App-header>nav>ul>li>a:hover {
+  color: greenyellow;
+}
 
 .App-title {
   font-size: 1.5em;
