@@ -24,10 +24,14 @@
   text-decoration: none;
   color:white;
 }
-.App-header>nav>ul>li>a:hover {
+.App-header>nav>ul>li>a:hover,
+.App-header>nav>ul>li>a:active {
   color: greenyellow;
 }
-
+  .App-header>nav>ul>li>a.active {
+  color: greenyellow;
+  text-decoration: beige;
+}
 .App-title {
   font-size: 1.5em;
 }

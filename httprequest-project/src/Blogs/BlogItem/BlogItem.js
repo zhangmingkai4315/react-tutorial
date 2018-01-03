@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {withRouter} from 'react-router-dom'
 const blogItems = (props) => {
     // console.log(props.post)
     return (
@@ -11,4 +11,5 @@ const blogItems = (props) => {
     )
 }
 
-export default blogItems;
+// 可获得route对应的变量
+export default withRouter(blogItems);

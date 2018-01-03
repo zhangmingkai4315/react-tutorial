@@ -5,13 +5,14 @@ class FullBlog extends React.Component {
     blog:null,
     loading:true
   }
-  componentDidUpdate = (prevProps)=>{
-    if(prevProps.blogId===this.props.blogId){
-      return
-    }
+  componentDidMount = (prevProps)=>{
+    let id = this.props.match.params.id;
+    // if(prevProps.blogId===this.props.blogId){
+    //   return
+    // }
     this.setState({loading:true})
-    if(this.props.blogId){
-      axios.get('/posts/'+this.props.blogId)
+    if (id) {
+      axios.get('/posts/'+id)
          .then(response=>{
           this.setState({blog:response.data,loading:false})
       })
@@ -19,10 +20,6 @@ class FullBlog extends React.Component {
   }
   
   render() {
-    let blogId = this.props.blogId;
-    if (blogId === null) {
-      return <p>Please select one blog first</p>
-    }
     if(this.state.loading){
       return 'loading...'
     }else {
@@ -30,7 +27,7 @@ class FullBlog extends React.Component {
         <div className="full-blog">
           <h2>{this.state.blog.title}</h2>
           <p>{this.state.blog.body}</p>
-          <button onClick={this.props.onDeleteBlog.bind(null,this.state.blog.id)}>Delete</button>
+         
         </div>
         )
     }
