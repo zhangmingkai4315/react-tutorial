@@ -16,6 +16,7 @@ class NewBlog extends Component {
     axios.post('/posts',blog)
          .then(response=>{
            console.log(response.data);
+           this.props.history.push('/blogs')
          })
   }
   render () {

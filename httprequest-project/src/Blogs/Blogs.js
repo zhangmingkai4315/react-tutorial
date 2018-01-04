@@ -1,6 +1,7 @@
 import React from 'react';
 import BlogItem from './BlogItem/BlogItem';
-
+import FullBlog from './FullBlog/FullBlog';
+import { Route }from 'react-router-dom';
 import axios from 'axios';
 import Aux from '../HOC/Aux';
 import Link from 'react-router-dom/Link';
@@ -10,19 +11,6 @@ class Blogs extends React.Component {
     posts:[],
     choosedBlogId : null
   }
-  // chooseBlog = (id) => {
-  //   if (typeof id === 'number' && id > 0) {
-  //     this.setState({choosedBlogId: id})
-  //   }
-  // }
-  // deleteBlog = (id) => {
-  //   console.log('delete ' + id)
-  //   axios
-  //     .delete('/posts/' + id)
-  //     .then(response => {
-  //       console.log(response)
-  //     })
-  // }
   componentDidMount() {
     axios.get("/posts")
          .then(response=>{
@@ -45,6 +33,7 @@ class Blogs extends React.Component {
         <div className="posts">
           {posts}
         </div>
+        <Route path={this.props.match.url+"/:id"} exact component={FullBlog}/>
       </Aux>
     )
   }
