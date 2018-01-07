@@ -26,7 +26,7 @@ class orders extends Component {
     let order = <Spinner/>
     if (this.state.loading === false){
         order = this.state.orders.map(o=>{
-return <Order key={o.id} ingredients={o.ingredients} price={+ o.price}/>
+        return <Order key={o.id} ingredients={o.ingredients} price={+ o.price}/>
         })
     }
     return <div>{order}</div>
