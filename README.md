@@ -12,3 +12,5 @@ react开发基础教程
 
 
 6. [css-loading](https://projects.lukehaas.me/css-loaders/)
+
+7. [redux](https://redux.js.org/)

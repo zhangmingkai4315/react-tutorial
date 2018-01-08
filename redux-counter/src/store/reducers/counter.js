@@ -1,4 +1,4 @@
-import {INCREMENT, DECREMENT} from "../actions";
+import {INCREMENT, DECREMENT} from "../actions/actionsTypes";
 
 const initialState = {
   counter: 0

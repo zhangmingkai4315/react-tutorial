@@ -1,4 +1,4 @@
-import {STORE_RESULT, DELETE_RESULT} from "../actions";
+import {STORE_RESULT, DELETE_RESULT} from "../actions/actionsTypes";
 
 const initialState = {
   results: []
@@ -12,7 +12,7 @@ const resultsReducer = (state = initialState, action) => {
           ...state.results, {
             id: + new Date(),
             value: action.result
-          }
+          } 
         ]
       }
     case DELETE_RESULT:
