@@ -5,17 +5,18 @@ import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/BuildControls/BuildControls';
 import Modal from '../../components/ui/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
-import axios from '../../axios-orders';
 import Spinner from '../../components/ui/Spinner/Spinner';
 import WithErrorHandler from '../../HOC/WithErrorHandler/WithErrorHandler';
 import axiosOrders from '../../axios-orders';
-import * as actionType from '../../store/actions';
+import {addIngredient,removeIngredient,initIngredients} from '../../store/actions';
 
 const BASE_PRICE = 4
 class BurgerBuilder extends Component {
   state = {
     purchasing: false,
-    loading: false
+  }
+  componentDidMount(){
+    this.props.onInitIngredients()
   }
   purchaseHandler = () => {
     this.setState({purchasing: true})
@@ -43,6 +44,9 @@ class BurgerBuilder extends Component {
     if (this.state.loading) {
       modalContent = <Spinner/>
     }
+    if(this.props.loading===true){
+      return(<Spinner/>)
+    }
     return (
       <Aux>
         <Modal dismissModal={this.purchaseCancelHandler} show={this.state.purchasing}>
@@ -65,16 +69,23 @@ class BurgerBuilder extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     onAddIngredients: (name) => {
-      dispatch({type: actionType.ADD_INGREDIENTS, ingredientName: name})
+      dispatch(addIngredient(name))
     },
     onRemoveIngredients: (name) => {
-      dispatch({type: actionType.REMOVE_INGREDIENTS, ingredientName: name})
+      dispatch(removeIngredient(name))
+    },
+    onInitIngredients :()=>{
+       dispatch(initIngredients())
     }
   }
 }
 
 const mapStateToProps = state => {
-  return {ingredients: state.ingredients, totalPrice: state.totalPrice}
+  return {
+    ingredients: state.burger.ingredients||{}, 
+    loading:state.burger.loading,
+    error: state.burger.error,
+    totalPrice: state.burger.totalPrice}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(WithErrorHandler(BurgerBuilder, axiosOrders))
