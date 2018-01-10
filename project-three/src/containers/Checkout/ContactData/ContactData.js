@@ -3,7 +3,7 @@ import Button from '../../../components/ui/Button/Button';
 import {connect} from 'react-redux'
 import css from './ContactData.css'
 import Spinner from '../../../components/ui/Spinner/Spinner';
-import axiosOrders from '../../../axios-orders';
+import {axiosOrders} from '../../../axios-instance';
 import WithErrorHandler from '../../../HOC/WithErrorHandler/WithErrorHandler'
 import Input from '../../../components/ui/Input/Input';
 import {purchaseBurgerStart} from '../../../store/actions'
@@ -97,7 +97,7 @@ class ContactData extends Component {
         value: 'fastest',
         valid: true
       }
-    },
+    }
   }
   checkValidity(value, rules) {
     let isValid = true;
@@ -148,7 +148,9 @@ class ContactData extends Component {
       price: this.props.price,
       orderData: formData
     }
-    this.props.onPostOrder(order)
+    this
+      .props
+      .onPostOrder(order)
   }
   render() {
     let form = null;
@@ -189,20 +191,14 @@ class ContactData extends Component {
   }
 }
 
-
-const mapStateToProps = (state)=>{
+const mapStateToProps = (state) => {
+  return {ingredients: state.burger.ingredients, price: state.burger.totalPrice, loading: state.order.loading, error: state.order.error}
+}
+const mapDispatchToProps = (dispatch) => {
   return {
-    ingredients:state.burger.ingredients,
-    price:state.burger.totalPrice,
-    loading:state.order.loading,
-    error:state.order.error
+    onPostOrder: (order) => {
+      dispatch(purchaseBurgerStart(order))
+    }
   }
 }
-const mapDispatchToProps = (dispatch)=>{
-  return {
-      onPostOrder : (order) => {
-        dispatch(purchaseBurgerStart(order))
-      }
-  }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(WithErrorHandler(ContactData,axiosOrders))
+export default connect(mapStateToProps, mapDispatchToProps)(WithErrorHandler(ContactData, axiosOrders))

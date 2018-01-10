@@ -7,6 +7,16 @@
     padding-top: 20px;
 }
 
+.LoginSwitch {
+    border: none;
+    background: white;
+    cursor: pointer;
+    display: block;
+    padding: 10px 16px;
+    color: #828181;
+    font-weight: bolder;
+}
+
 @media (max-width: 600px) {
     .LoginContainer {
         width: 90%;

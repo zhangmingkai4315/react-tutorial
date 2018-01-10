@@ -1,10 +1,8 @@
 import {combineReducers} from 'redux'
 import burgerBuilder from './burgerBuilder'
 import order from './order'
- 
-const reducers = combineReducers({
-  "burger":burgerBuilder,
-  "order":order,
-})
+import auth from './auth';
+
+const reducers = combineReducers({"burger": burgerBuilder, "order": order, "auth": auth})
 
 export default reducers;
