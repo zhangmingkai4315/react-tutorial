@@ -1,8 +1,8 @@
 import * as actionTypes from './actionsTypes'
 import {axiosAuth, apiConfig} from '../../axios-instance'
 
-export const loginSuccess = (data) => {
-    return {type: actionTypes.LOGIN_SUCCESS, payload: data}
+export const loginSuccess = (userId, token) => {
+    return {type: actionTypes.LOGIN_SUCCESS, userId, token}
 }
 
 export const loginFail = (error) => {
@@ -24,17 +24,16 @@ export const loginSubmit = (data) => {
         axiosAuth
             .post(`/identitytoolkit/v3/relyingparty/verifyPassword?key=${apiConfig.apiKey}`, authBody)
             .then((response) => {
-
-                dispatch(loginSuccess(response.data))
+                dispatch(loginSuccess(response.data.localId, response.data.idToken))
+                dispatch(checkExpirtTime(response.data.expiresIn))
             })
             .catch(error => {
-                dispatch(loginFail(error))
+                dispatch(signupFail(error.response.data.error.message))
             })
     }
 }
-
-export const signupSuccess = (data) => {
-    return {type: actionTypes.SIGNUP_SUCCESS, payload: data}
+export const signupSuccess = (userId, token) => {
+    return {type: actionTypes.SIGNUP_SUCCESS, userId, token}
 }
 
 export const signupFail = (error) => {
@@ -56,11 +55,30 @@ export const signupSubmit = (data) => {
         axiosAuth
             .post(`identitytoolkit/v3/relyingparty/signupNewUser?key=${apiConfig.apiKey}`, authBody)
             .then((response) => {
-
-                dispatch(loginSuccess(response.data))
+                dispatch(signupSuccess(response.data.localId, response.data.idToken))
+                dispatch(checkExpirtTime(response.data.expiresIn))
             })
             .catch(error => {
-                dispatch(loginFail(error))
+                if (error && error.response) {
+                    dispatch(signupFail(error.response.data.error.message))
+
+                } else {
+                    dispatch(signupFail("server fail"))
+                }
+
             })
+    }
+}
+
+export const logoutUser = () => {
+    return {type: actionTypes.LOGOUT_USER}
+}
+
+export const checkExpirtTime = (time) => {
+    return (dispatch) => {
+        setTimeout(() => {
+            console.log('Start counter')
+            dispatch(logoutUser())
+        }, parseInt(time * 1000))
     }
 }

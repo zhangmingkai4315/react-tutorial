@@ -14,3 +14,5 @@ export const LOGIN_FAIL = 'LOGIN_FAIL'
 export const SIGNUP_BEGIN = 'SIGNUP_BEGIN'
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS'
 export const SIGNUP_FAIL = 'SIGNUP_FAIL'
+
+export const LOGOUT_USER = 'LOGOUT_USER'

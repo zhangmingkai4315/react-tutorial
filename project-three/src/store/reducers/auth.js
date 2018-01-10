@@ -1,19 +1,27 @@
 import * as actionTypes from '../actions/actionsTypes'
 
 const initalState = {
-    user: null,
+    userId: null,
+    token: null,
     loading: false,
     error: ''
 }
 const reducers = (state = initalState, action) => {
     switch (action.type) {
+        case actionTypes.LOGOUT_USER:
+            return {
+                ...state,
+                userId: null,
+                token: null
+            }
         case actionTypes.SIGNUP_SUCCESS:
         case actionTypes.LOGIN_SUCCESS:
             return {
                 ...state,
                 loading: false,
                 error: '',
-                user: action.payload
+                userId: action.userId,
+                token: action.token
             }
         case actionTypes.SIGNUP_FAIL:
         case actionTypes.LOGIN_FAIL:

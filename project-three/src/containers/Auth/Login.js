@@ -137,6 +137,7 @@ class Login extends Component {
         }
         const form = (
             <form>
+
                 {formElementArray.map(form => {
                     if (!this.state.isSignup && form.id === 'password_2') {
                         return null;
@@ -169,6 +170,7 @@ class Login extends Component {
                         ? 'Goto Login'
                         : 'Goto Signup'}
                 </button>
+                {this.props.error}
             </form>
         )
         return (
