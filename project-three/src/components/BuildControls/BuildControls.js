@@ -20,10 +20,14 @@ const buildControls =(props) =>(
       add={props.addIngredient} 
       label={ctrl.label}/>
     ))}
+    {props.isAuth===true?(
     <button
     onClick={props.ordered}
     className={css.OrderBtn} 
-    disabled={props.disableOrder}>Order</button>
+    disabled={props.disableOrder}>Order</button>):(
+  <button  
+  onClick={props.goAuth}
+  className={css.OrderBtn}>Go to Auth</button>)}
   </div>
   )
 

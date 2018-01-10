@@ -56,6 +56,8 @@ class BurgerBuilder extends Component {
         </Modal>
         <Burger ingredients={this.props.ingredients}/>
         <BuildControls
+          goAuth = {()=>{this.props.history.push('/login')}}
+          isAuth = {this.props.isAuth}
           ordered={this.purchaseHandler}
           disableOrder=
           {this.props.totalPrice<=BASE_PRICE}
@@ -84,6 +86,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = state => {
   return {
+    isAuth : state.auth.token!==null,
     ingredients: state.burger.ingredients || {},
     loading: state.burger.loading,
     error: state.burger.error,

@@ -70,7 +70,7 @@ export const signupSubmit = (data) => {
     }
 }
 
-export const logoutUser = () => {
+export const logout = () => {
     return {type: actionTypes.LOGOUT_USER}
 }
 
@@ -78,7 +78,7 @@ export const checkExpirtTime = (time) => {
     return (dispatch) => {
         setTimeout(() => {
             console.log('Start counter')
-            dispatch(logoutUser())
+            dispatch(logout())
         }, parseInt(time * 1000))
     }
 }

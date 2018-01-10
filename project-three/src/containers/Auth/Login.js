@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import css from './Login.css'
 import {connect} from 'react-redux'
+import {Redirect} from 'react-router-dom'
 import Input from '../../components/ui/Input/Input'
 import Button from '../../components/ui/Button/Button'
 import {loginSubmit, signupSubmit} from '../../store/actions'
@@ -131,13 +132,17 @@ class Login extends Component {
         })
     }
     render() {
+        let redirectPage = null
+        if( this.props.isAuth ){
+            redirectPage = <Redirect to='/'/>
+        } 
         const formElementArray = []
         for (let key in this.state.loginForm) {
             formElementArray.push({id: key, config: this.state.loginForm[key]})
         }
         const form = (
             <form>
-
+                {redirectPage}
                 {formElementArray.map(form => {
                     if (!this.state.isSignup && form.id === 'password_2') {
                         return null;
@@ -176,13 +181,18 @@ class Login extends Component {
         return (
             <div className={css.LoginContainer}>{this.props.loading
                     ? <Spinner/>
-                    : form}</div>
+                    : 
+                    form}</div>
         )
     }
 }
 
 const mapStateToProps = (state) => {
-    return {user: state.auth.user, loading: state.auth.loading, error: state.auth.error}
+    return {
+        isAuth: state.auth.token!==null, 
+        loading: state.auth.loading, 
+        error: state.auth.error
+    }
 }
 const mapDispatchToProps = (dispatch) => {
     return {
