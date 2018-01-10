@@ -1,0 +1,15 @@
+.LoginContainer {
+    width: 60%;
+    text-align: center;
+    left: 20%;
+    position: relative;
+    box-shadow: 1px 1px 10px 1px #ccc;
+    padding-top: 20px;
+}
+
+@media (max-width: 600px) {
+    .LoginContainer {
+        width: 90%;
+        left: 5%;
+    }
+}
