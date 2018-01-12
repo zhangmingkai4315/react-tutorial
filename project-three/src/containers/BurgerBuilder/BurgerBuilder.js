@@ -8,7 +8,7 @@ import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import Spinner from '../../components/ui/Spinner/Spinner';
 import WithErrorHandler from '../../HOC/WithErrorHandler/WithErrorHandler';
 import {axiosOrders} from '../../axios-instance';
-import {addIngredient, removeIngredient, initIngredients} from '../../store/actions';
+import {addIngredient, setAuthRedirectPath ,removeIngredient, initIngredients} from '../../store/actions';
 
 const BASE_PRICE = 4
 class BurgerBuilder extends Component {
@@ -56,7 +56,10 @@ class BurgerBuilder extends Component {
         </Modal>
         <Burger ingredients={this.props.ingredients}/>
         <BuildControls
-          goAuth = {()=>{this.props.history.push('/login')}}
+          goAuth = {()=>{
+            this.props.onRedirectPath('/checkout')
+            this.props.history.push('/login')
+          }}
           isAuth = {this.props.isAuth}
           ordered={this.purchaseHandler}
           disableOrder=
@@ -80,6 +83,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     onInitIngredients: () => {
       dispatch(initIngredients())
+    },
+    onRedirectPath : (path) =>{
+      dispatch(setAuthRedirectPath(path))
     }
   }
 }

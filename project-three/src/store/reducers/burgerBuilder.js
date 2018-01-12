@@ -4,7 +4,8 @@ const initalState = {
   ingredients:null,
   totalPrice: 4,
   loading:true,
-  error:''
+  error:'',
+  building:false
 }
 const INGREDIENT_PRICES = {
   salad: .5,
@@ -21,6 +22,7 @@ const reducers = (state = initalState, action) => {
           ...state.ingredients,
           [action.ingredientName]: state.ingredients[action.ingredientName] + 1
         },
+        building:true,
         totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName]
       }
     case actionTypes.REMOVE_INGREDIENTS:
@@ -29,6 +31,7 @@ const reducers = (state = initalState, action) => {
       } else {
         return {
           ...state,
+          building:true,
           ingredients: {
             ...state.ingredients,
             [action.ingredientName]: state.ingredients[action.ingredientName] - 1
@@ -52,9 +55,10 @@ const reducers = (state = initalState, action) => {
         ingredients:action.payload,
         totalPrice : totalPrice,
         error:'',
+        building:false,
         loading:false
       }
-      // break;
+  
     default:
       return state;
   }

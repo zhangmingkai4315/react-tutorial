@@ -82,3 +82,12 @@ export const checkExpirtTime = (time) => {
         }, parseInt(time * 1000))
     }
 }
+
+
+
+export const setAuthRedirectPath = (path)=>{
+    return {
+        type: actionTypes.AUTH_REDIRECT_PATH,
+        payload:path
+    }
+}

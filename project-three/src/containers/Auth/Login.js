@@ -134,7 +134,11 @@ class Login extends Component {
     render() {
         let redirectPage = null
         if( this.props.isAuth ){
-            redirectPage = <Redirect to='/'/>
+            if (this.props.buildingBurger && this.props.redirectPath !== '/') {
+                redirectPage = <Redirect to={this.props.redirectPath}/>
+            }else{
+                redirectPage = <Redirect to='/'/>
+            }
         } 
         const formElementArray = []
         for (let key in this.state.loginForm) {
@@ -191,7 +195,9 @@ const mapStateToProps = (state) => {
     return {
         isAuth: state.auth.token!==null, 
         loading: state.auth.loading, 
-        error: state.auth.error
+        error: state.auth.error,
+        buildingBurger:state.burger.building,
+        redirectPath:state.auth.authRedirectPath,
     }
 }
 const mapDispatchToProps = (dispatch) => {
