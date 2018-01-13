@@ -61,7 +61,6 @@ class Login extends Component {
     }
     loginHandler = (event) => {
         event.preventDefault();
-        console.log(this.props)
         const formData = {}
         for (let i in this.state.loginForm) {
             formData[i] = this.state.loginForm[i].value;
@@ -95,8 +94,6 @@ class Login extends Component {
             isValid = value.length <= rules.maxLength && isValid;
         }
         if (rules.sameAs) {
-            console.log(value)
-            console.log(this.state.loginForm)
             isValid = (value === this.state.loginForm[rules.sameAs].value)
         }
         return isValid;

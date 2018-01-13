@@ -6,14 +6,12 @@ import ContactData from './ContactData/ContactData';
 
 class Checkout extends Component {
   orderCancel = () => {
-    console.log('cancel...')
     this
       .props
       .history
       .goBack()
   }
   orderContinue = () => {
-    console.log('order...')
     this
       .props
       .history

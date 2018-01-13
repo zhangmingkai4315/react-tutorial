@@ -85,7 +85,6 @@ export const logout = () => {
 export const checkExpirtTime = (time) => {
     return (dispatch) => {
         setTimeout(() => {
-            console.log('Start counter')
             dispatch(logout())
         }, parseInt(time * 1000))
     }

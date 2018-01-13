@@ -113,7 +113,6 @@ class ContactData extends Component {
     return isValid;
   }
   inputChanged = (event, id) => {
-    console.log(event)
     const updatedOrderForm = {
       ...this.state.orderForm
     }
@@ -133,12 +132,10 @@ class ContactData extends Component {
     for (let input in updatedOrderForm) {
       formIsValid = updatedOrderForm[input].valid && formIsValid;
     }
-    console.log(formIsValid)
     this.setState({orderForm: updatedOrderForm, formIsValid: formIsValid})
   }
   orderHandler = (event) => {
     event.preventDefault();
-    console.log(this.props)
     const formData = {}
     for (let i in this.state.orderForm) {
       formData[i] = this.state.orderForm[i].value;
